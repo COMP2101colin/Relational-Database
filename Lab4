@@ -1,0 +1,94 @@
+
+SET SQL_SAFE_UPDATES = 0;
+
+
+/*
+ Question 1
+ 
+ Write an UPDATE statement to change all of the LASTNAMEs in the EMPLOYEE table to SMITH ( 5 marks )
+ 
+*/
+SELECT * FROM EMPLOYEE;
+
+UPDATE EMPLOYEE 
+SET LASTNAME = 'SMITH' ;
+SELECT * FROM EMPLOYEE ;
+
+
+
+
+/*
+ Question 2
+ 
+ Write an UPDATE statement to change all of the MAJPROJ records in the PROJECT to AD9999 Where they don't have a value( 5 marks )
+ 
+*/
+SELECT * FROM PROJECT ;
+
+UPDATE PROJECT
+SET MAJPROJ = 'AD9999'
+WHERE MAJPROJ = '' ;
+SELECT * FROM PROJECT;
+
+/*
+ Question 3
+ 
+ Write a single UPDATE statement to change the QUANTITY to 200 and the LOCATION to Barrie  WHERE the PID has a 1 in the 7th position( 8 marks )
+ 
+*/
+SELECT * FROM INVENTORY;
+
+UPDATE INVENTORY
+SET QUANTITY = '200',
+    LOCATION = 'BARRIE'
+WHERE PID LIKE '______1%';
+SELECT * FROM INVENTORY;
+/*
+ Question 4
+ 
+ Write an UPDATE statement to change the SALARY to be increased by 10% WHERE EMPLOYEE IS older than 40 years old( 10 marks ) (hint date functions to determine age)
+ 
+*/
+SELECT * FROM EMPLOYEE;
+
+UPDATE EMPLOYEE
+SET SALARY = SALARY + (SALARY * 10)/100
+WHERE (YEAR(NOW()) - YEAR(BIRTHDATE)) > 40;
+SELECT * FROM EMPLOYEE; 
+/*
+ Question 5
+ 
+ Write a DELETE statement to remove employee 000030 from the EMPLOYEE table  ( 5 marks )
+ 
+   
+ */
+ SELECT * FROM EMPLOYEE;
+ 
+ DELETE FROM EMPLOYEE
+ WHERE EMPNO = '000030';
+ SELECT * FROM EMPLOYEE;
+
+/*
+ Question 6
+ 
+ Write a DELETE statement to remove records where the total of their SALARY and COMM column together is less than $40000  and they have worked for the company for less than 8 years from the STAFF table ( 7 marks )
+
+  
+ */
+ SELECT * FROM STAFF;
+ 
+ DELETE FROM STAFF
+ WHERE SALARY + COMM < 40000 AND YEARS < 8 ;
+ SELECT * FROM STAFF;
+
+/*
+ Question 7
+ 
+  Write a DELETE statement to remove records WHERE the REGION has South in the name and the SALES DATE is in APRIL in the SALES table  ( 10 marks )
+  
+ */
+SELECT * FROM SALES;
+
+DELETE FROM SALES
+WHERE REGION LIKE '%South%' AND MONTH(SALES_DATE) = 4;
+SELECT * FROM SALES;
