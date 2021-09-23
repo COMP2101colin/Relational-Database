@@ -1,0 +1,101 @@
+/*
+ Question 1
+ 
+ Write a statement to Create a database (make sure your database doesn't contain special characters)  ( 5 marks )
+ 
+*/
+
+CREATE DATABASE ASSIGNMENT1;
+
+
+
+
+/*
+ Question 2
+ 
+ Write a statement to Drop that Database you created in Question 1  ( 5 marks )
+ 
+*/
+
+DROP DATABASE ASSIGNMENT1;
+
+/*
+ Question 3
+ 
+ Write a statement to set the database you created to be the one that will be active for your session  ( 5 marks )
+ 
+*/
+
+USE ASSIGNMENT1;
+
+/*
+ Question 4
+ 
+ Write a statement to Create a table that will have columns that represent all of the basic datatypes that are available in the databse  (make sure your table and column names are describe the content of the table)  ( 15 marks )
+ example
+ CREATE TABLE book_info (
+     id                 VARCHAR(32)     not null,
+     filePath           long varchar     null,
+     price		        float     null ,
+     title                  null,
+     author             long varchar     null,
+  );
+ 
+ 
+*/ 
+CREATE TABLE STUDENT(
+STD_NO NUMERIC (50) NOT NULL,
+FIRST_NAME VARCHAR (30) NOT NULL,
+LAST_NAME VARCHAR (30) NOT NULL,
+CITY_NAME VARCHAR (50) NOT NULL,
+PRIMARY KEY (STD_NO));
+/*
+ Question 5
+ 
+ Write 5 statements to add data to the table you created in question 4   ( 15 marks )
+ 
+   
+ */
+INSERT INTO STUDENT (STD_NO, FIRST_NAME, LAST_NAME, CITY_NAME) VALUES ('00627','RICK','HARRISON','ORILLIA');
+INSERT INTO STUDENT (STD_NO, FIRST_NAME, LAST_NAME, CITY_NAME) VALUES ('00683','JACK','MORRIS','ORANGEVILLE');
+INSERT INTO STUDENT (STD_NO, FIRST_NAME, LAST_NAME, CITY_NAME) VALUES ('00931','CHRIS','BENNINGTON','BARRIE');
+INSERT INTO STUDENT (STD_NO, FIRST_NAME, LAST_NAME, CITY_NAME) VALUES ('00840','DANIEL','BRYAN','OWENSOUND');
+INSERT INTO STUDENT (STD_NO, FIRST_NAME, LAST_NAME, CITY_NAME) VALUES ('00829','KANE','WILLIAMSON','MIDLAND');
+
+/*
+ Question 6
+ 
+ Write 2 statements to Create two tables that have a way to force uniqueness from row to row ( make sure your table and column names are describe the content of the table)   ( 10 marks )
+ 
+ */
+CREATE TABLE CUSTOMER(
+CUSTOMER_ID NUMERIC(50) NOT NULL,
+FIRST_NAME VARCHAR(30) NOT NULL,
+LAST_NAME VARCHAR(40) NOT NULL,
+CONTACT_NUMBER NUMERIC(50) NOT NULL,
+PRIMARY KEY (CUSTOMER_ID));
+
+CREATE TABLE ACCOUNT_INFO(
+ACCOUNT_NO NUMERIC(40) NOT NULL,
+CUSTOMER_ID NUMERIC(50) NOT NULL,
+DEPOSIT_AMOUNT NUMERIC(30),
+PRIMARY KEY (ACCOUNT_NO),
+FOREIGN KEY (CUSTOMER_ID) REFERENCES CUSTOMER(CUSTOMER_ID));
+
+
+
+/*
+ Question 7
+ 
+ Write 5 statements to add to the first table you created in question 6   ( 10 marks )
+ 
+ Write 5 statements to add to the second table you created in question 6  ( 10 marks )
+  
+ */
+INSERT INTO CUSTOMER (CUSTOMER_ID, FIRST_NAME, LAST_NAME, CONTACT_NUMBER) VALUE ('0011','DAVID','WARNER','6472738195');
+INSERT INTO CUSTOMER (CUSTOMER_ID, FIRST_NAME, LAST_NAME, CONTACT_NUMBER) VALUE ('0084','STEVE','SMITH','7058291022');
+INSERT INTO CUSTOMER (CUSTOMER_ID, FIRST_NAME, LAST_NAME, CONTACT_NUMBER) VALUE ('0073','MITCHELL','MARSH','7182901767');
+INSERT INTO CUSTOMER (CUSTOMER_ID, FIRST_NAME, LAST_NAME, CONTACT_NUMBER) VALUE ('0039','SAM','CURRAN','7341893826');
+INSERT INTO CUSTOMER (CUSTOMER_ID, FIRST_NAME, LAST_NAME, CONTACT_NUMBER) VALUE ('0052','ANDREW','MAXWELL','6479136245');
+
+SELECT * FROM CUSTOMER
